@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        background: #fafafa;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <div id="demo1"></div>
+
+    <script type="module">
+      import { html, render } from 'lit-html';
+      import '../dist/index.js';
+      const initialValue = [
+        {
+          type: 'paragraph',
+          children: [
+            { text: '  This is editable ' },
+            { text: 'rich', bold: true },
+            { text: ' text, ' },
+            { text: 'much', italic: true },
+            { text: ' better than a ' },
+            { text: '<textarea>', code: true },
+            { text: '!' },
+          ],
+        },
+        {
+          type: 'paragraph',
+          children: [
+            {
+              text: "Since it's rich text, you can do things like turn a selection of text ",
+            },
+            { text: 'bold', bold: true },
+            {
+              text: ', or add a semantically rendered block quote in the middle of the page, like this:',
+            },
+          ],
+        },
+        {
+          type: 'block-quote',
+          children: [{ text: 'A wise quote.' }],
+        },
+        {
+          type: 'paragraph',
+          children: [{ text: 'Try it out for yourself!' }],
+        },
+      ];
+      const title = 'Hello owc World!';
+      const emptyValue = []
+      render(
+        html`<slate-lit placeholder="Give me some texts" .value=${emptyValue}> some more light-dom </slate-lit> `,
+        document.querySelector('#demo')
+      );
+
+      render(
+        html`<rich-text-editor .value=${initialValue}> some more light-dom </rich-text-editor> `,
+        document.querySelector('#demo1')
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "slate-lit",
+      "description": "A text editor component using slate library",
+      "properties": [
+        {
+          "name": "autoCorrect",
+          "type": "String",
+          "description": "",
+          "default": "off"
+        },
+        {
+          "name": "value",
+          "type": "Node[]",
+          "description": "",
+          "default": "[{ text: '' }]"
+        },
+        {
+          "name": "placeholder",
+          "type": "String",
+          "description": "",
+          "default": ""
+        },
+        {
+          "name": "readOnly",
+          "type": "Boolean",
+          "description": "",
+          "default": false
+        },
+        {
+          "name": "renderElement",
+          "type": "RenderElement",
+          "description": "",
+          "default": "defaultElement"
+        },
+        {
+          "name": "renderLeaf",
+          "type": "RenderLeaf",
+          "description": "",
+          "default": "defaultLeaf"
+        },
+        {
+          "name": "editor",
+          "type": "LitEditor",
+          "description": "",
+          "default": "withHistory(withLit(createEditor()))"
+        },
+        {
+          "name": "autoCapitalize",
+          "type": "none | on | words | characters",
+          "description": "",
+          "default": "none"
+        }
+      ],
+      "events": [
+        {
+          "name": "valueChange"
+        },
+        {
+          "name": "selectionChange"
+        },
+        {
+          "name": "focus"
+        },
+        {
+          "name": "blur"
+        },
+        {
+          "name": "click"
+        },
+        {
+          "name": "copy"
+        },
+        {
+          "name": "cut"
+        },
+        {
+          "name": "dragover"
+        },
+        {
+          "name": "dragstart"
+        },
+        {
+          "name": "drop"
+        },
+        {
+          "name": "keydown"
+        },
+        {
+          "name": "paste"
+        }
+      ],
+      "slots": [],
+      "cssProperties": [
+        {
+          "name": "--slate-lit-text-color",
+          "description": "Text Color",
+          "type": "Color",
+          "default": "#000"
+        },
+        {
+          "name": "--slate-lit-bg-color",
+          "description": "Background Text Color",
+          "type": "Color",
+          "default": "#fff"
+        }
+      ]
+    }
+  ]
+}

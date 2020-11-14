@@ -47,7 +47,6 @@ export class Toolbar extends LitElement {
       margin-left: -6px;
     }
 
-
     .toolbar-container.bottom::after {
       bottom: 100%;
       left: 50%;
@@ -61,36 +60,6 @@ export class Toolbar extends LitElement {
       border-width: 6px;
       margin-left: -6px;
     }
-
-    .toolbar-container.right::after {
-      left: 100%;
-      top: 50%;
-      border: solid transparent;
-      content: "";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-left-color: rgb(var(--slate-toolbar-bg-color, 18,18,18));
-      border-width: 6px;
-      margin-top: -6px;
-    }
-
-
-    .toolbar-container.left::after {
-      right: 100%;
-      top: 50%;
-      border: solid transparent;
-      content: "";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-right-color: rgb(var(--slate-toolbar-bg-color, 18,18,18));
-      border-width: 6px;
-      margin-top: -6px;
-    }
-
   `
   @query('.toolbar-container') container!: HTMLElement;
   private _open = false;

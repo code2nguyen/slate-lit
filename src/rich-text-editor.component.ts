@@ -47,17 +47,17 @@ export class RichTextEditor extends LitElement {
 
   codeStyle = {
     fontFamily: 'monospace',
-    backgroundColor: '#eee',
+    backgroundColor: 'var(--slate-lit-code-background-color, #eee)',
     padding: '3px'
   }
 
   blockQuoteStyle = {
-    borderLeft: '2px solid #ddd',
     marginLeft: '0',
     marginRight: '0',
     paddingLeft: '10px',
     color: '#aaa',
     fontStyle: 'italic',
+    fontSize: '0.9rem'
   }
 
 

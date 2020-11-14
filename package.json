@@ -17,12 +17,10 @@
     "@open-wc/demoing-storybook": "^2.4.6",
     "@types/lodash-es": "^4.17.3",
     "direction": "^1.0.4",
-    "haunted": "^4.7.0",
     "is-hotkey": "^0.1.6",
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2",
     "lodash-es": "^4.17.15",
-    "scroll-into-view-if-needed": "^2.2.26",
     "slate": "^0.59.0",
     "slate-history": "^0.59.0"
   },

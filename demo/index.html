@@ -6,6 +6,10 @@
       body {
         background: #fafafa;
       }
+      .rich-text-editor {
+        height: 100px;
+        overflow: auto;
+      }
     </style>
   </head>
   <body>
@@ -57,7 +61,7 @@
       );
 
       render(
-        html`<rich-text-editor .value=${initialValue}> some more light-dom </rich-text-editor> `,
+        html`<rich-text-editor style="height: 300px" .value=${initialValue}> some more light-dom </rich-text-editor> `,
         document.querySelector('#demo1')
       );
     </script>

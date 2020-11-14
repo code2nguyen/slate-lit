@@ -26,9 +26,10 @@ export class SlateLit extends LitElement {
   static styles = css`
     :host {
       display: block;
-      padding: 25px;
+      /* padding: 25px; */
       color: var(--slate-lit-text-color, #000);
       background-color: var(--slate-lit-bg-color, #fff);
+      overflow: auto;
     }
 
     .slate-editor {
@@ -490,10 +491,7 @@ export class SlateLit extends LitElement {
         );
       }
       const leafEl = newDomRange.startContainer.parentElement!;
-      scrollIntoView(leafEl, {
-        scrollMode: 'if-needed',
-        boundary: el,
-      });
+      leafEl.scrollIntoView()
     } else {
       domSelection.removeAllRanges();
     }

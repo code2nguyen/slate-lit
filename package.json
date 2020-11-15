@@ -1,6 +1,6 @@
 {
-  "name": "slate-lit",
-  "version": "0.0.0",
+  "name": "@c2n/slate-lit",
+  "version": "1.0.0",
   "description": "Webcomponent slate-lit following open-wc recommendations",
   "author": "slate-lit",
   "license": "MIT",
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "concurrently --kill-others --names tsc,web-dev-server \"npm run tsc:watch\" \"web-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
     "tsc:watch": "tsc --watch",
-    "prepublish": "tsc",
+    "prepublish": "tsc && cp package.json dist",
     "storybook": "start-storybook --node-resolve --watch --open",
     "storybook:build": "build-storybook -o docs"
   },

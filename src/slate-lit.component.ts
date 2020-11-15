@@ -58,7 +58,7 @@ export class SlateLit extends LitElement {
     }
   `;
 
-  private readonly emptyValue = [{ text: '' }];
+  private readonly emptyValue = [{ children: [{ text: '' }]}];
 
   private _value: Node[] = this.emptyValue;
 

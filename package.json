@@ -4,8 +4,8 @@
   "description": "Webcomponent slate-lit following open-wc recommendations",
   "author": "slate-lit",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "index.js",
+  "module": "index.js",
   "scripts": {
     "start": "concurrently --kill-others --names tsc,web-dev-server \"npm run tsc:watch\" \"web-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
     "tsc:watch": "tsc --watch",

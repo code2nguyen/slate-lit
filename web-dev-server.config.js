@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { esbuildPlugin } = require('@web/dev-server-esbuild');
 
 module.exports = {
   nodeResolve: {
@@ -15,7 +14,7 @@ module.exports = {
     dedupe: ['lit-html'],
     customResolveOptions: {
       // will overwrite es-dev-server's moduleDirs option
-      moduleDirectory: ['node_modules'],
+      moduleDirectory: ['./node_modules'],
       preserveSymlinks: true,
     },
   },
@@ -24,11 +23,12 @@ module.exports = {
   plugins: [
     {
       serve(context) {
-        if (context.path === '/node_modules/is-hotkey/lib/index.js') {
+        console.log(context.path)
+        if (context.path.includes('/node_modules/is-hotkey/lib/index.js')) {
           return {body: fs.readFileSync(path.resolve(__dirname, 'es-dev-server-override/is-hotkey.js'))};
-        } else if (context.path === '/node_modules/direction/index.js') {
+        } else if (context.path.includes('/node_modules/direction/index.js')) {
           return {body: fs.readFileSync(path.resolve(__dirname, 'es-dev-server-override/direction.js'))};
-        } else if (context.path === '/node_modules/esrever/esrever.js') {
+        } else if (context.path.includes('/node_modules/esrever/esrever.js')) {
           return {body: fs.readFileSync(path.resolve(__dirname, 'es-dev-server-override/esrever.js'))};
         }
       },

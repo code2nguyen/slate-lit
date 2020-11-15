@@ -73,6 +73,10 @@ export class RichTextEditor extends LitElement {
     this._value = value;
     this.requestUpdate();
   }
+
+  @property({ type: String }) placeholder = ''
+  @property({type: Boolean}) readOnly = false;
+
   activeMarks = { title: { active: false }, highlight: { active: false }, quote: { active: false }, list: { active: false }, bold:  { active: false }, italic: { active: false }}
 
   render() {
@@ -81,6 +85,8 @@ export class RichTextEditor extends LitElement {
       .renderLeaf=${this.renderLeaf}
       .renderElement=${this.renderElement}
       .value=${this.value}
+      .placeholder=${this.placeholder}
+      .readOnly=${this.readOnly}
       @keydown=${this.onKeyDown}
       @selectionChange=${this.onSelectionChange}
       @valueChange=${this.onValueChange}

@@ -281,7 +281,7 @@ export class RichTextEditor extends LitElement {
     }
 
     if (leaf.highlight) {
-      modifiedChildren = html`<span style="color: var(--slate-lit-highlight-color, hsl(0, 70%, 50%)">${modifiedChildren}</span>`;
+      modifiedChildren = html`<span style="color: var(--slate-lit-highlight-color, hsl(0, 70%, 50%))">${modifiedChildren}</span>`;
     }
 
     return html`<span data-slate-leaf id=${attributes.id}>${modifiedChildren}</span>`;

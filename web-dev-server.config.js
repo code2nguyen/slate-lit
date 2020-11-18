@@ -23,7 +23,6 @@ module.exports = {
   plugins: [
     {
       serve(context) {
-        console.log(context.path)
         if (context.path.includes('/node_modules/is-hotkey/lib/index.js')) {
           return {body: fs.readFileSync(path.resolve(__dirname, 'es-dev-server-override/is-hotkey.js'))};
         } else if (context.path.includes('/node_modules/direction/index.js')) {

@@ -22,8 +22,9 @@ export class RichTextEditor extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
+      display: flex;
       position: relative;
+      padding: var(--slate-lit-rich-text-editor-padding, 8px 0px 8px 8px);
       overflow: auto;
     }
     .icon-button {
@@ -109,6 +110,7 @@ export class RichTextEditor extends LitElement {
 
   onValueChange(event: CustomEvent) {
     this._value = event.detail;
+    this.dispatchEvent(new CustomEvent(event.type, event));
   }
 
   onToolbarItemClick(event: MouseEvent) {

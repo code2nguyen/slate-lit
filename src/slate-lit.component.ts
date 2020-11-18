@@ -1,6 +1,4 @@
 import { html, css, LitElement, property, customElement, query } from 'lit-element';
-import scrollIntoView from 'scroll-into-view-if-needed';
-
 import throttle from 'lodash-es/throttle';
 
 import { withLit } from './plugin/with-lit';
@@ -27,9 +25,11 @@ export class SlateLit extends LitElement {
     :host {
       display: block;
       /* padding: 25px; */
+      padding-right: 8px;
       color: var(--slate-lit-text-color, #000);
       background-color: var(--slate-lit-bg-color, #fff);
-      overflow: auto;
+      width: 100%;
+      height: 100%;
     }
 
     .slate-editor {
@@ -46,8 +46,9 @@ export class SlateLit extends LitElement {
       white-space: nowrap;
       opacity: 0.333;
       user-select: none;
-      font-style: normal;
-      font-weight: normal;
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
       text-decoration: none
     }
 

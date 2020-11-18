@@ -9,7 +9,13 @@ const extensions = ['.js', '.ts'];
 
 const commonPlugins = [
   json(),
-  commonJS(),
+  commonJS({
+    namedExports: {
+      esrever: ['reverse'],
+      'react-dom': ['findDOMNode'],
+      'react-dom/server': ['renderToStaticMarkup'],
+    }
+  }),
   resolve({ module: true, jsnext: true, extensions }),
   postcss(),
   terser({ keep_classnames: true, keep_fnames: true }),
@@ -19,9 +25,9 @@ const es6Bundle = {
   input: ['src/index.ts'],
   output: {
     dir: 'dist',
-    entryFileNames: 'bundle/webcomponents.js',
+    entryFileNames: 'bundle/slate-lit.js',
     format: 'cjs',
-    name: 'calendar-clock',
+    name: 'c2n_slate_lit',
     sourcemap: true,
   },
   plugins: [typescript(), ...commonPlugins],

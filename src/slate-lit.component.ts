@@ -492,7 +492,7 @@ export class SlateLit extends LitElement {
         );
       }
       const leafEl = newDomRange.startContainer.parentElement!;
-      leafEl.scrollIntoView()
+      leafEl.scrollIntoView({behavior: "smooth", block: "nearest", inline: "nearest"})
     } else {
       domSelection.removeAllRanges();
     }

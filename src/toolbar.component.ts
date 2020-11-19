@@ -103,7 +103,7 @@ export class Toolbar extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.resizeObserver.unobserve(this.slateLit)
+    this.resizeObserver?.unobserve(this.slateLit)
   }
 
   setupResizeObserver() {

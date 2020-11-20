@@ -24,15 +24,13 @@ export class SlateLit extends LitElement {
   static styles = css`
     :host {
       display: block;
-      /* padding: 25px; */
-      padding-right: 8px;
-      color: var(--slate-lit-text-color, #000);
-      background-color: var(--slate-lit-bg-color, #fff);
       width: 100%;
       height: 100%;
     }
 
     .slate-editor {
+      color: var(--slate-lit-text-color, #000);
+      padding-right: 8px;
       outline: none;
       white-space: 'pre-wrap';
       word-wrap: 'break-word';

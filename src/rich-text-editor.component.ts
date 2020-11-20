@@ -24,7 +24,9 @@ export class RichTextEditor extends LitElement {
     :host {
       display: flex;
       position: relative;
-      padding: var(--slate-lit-rich-text-editor-padding, 8px 0px 8px 8px);
+      padding: var(--slate-lit-rich-text-editor-padding, 0px 0px 0px 0px);
+      background-color: var(--slate-lit-bg-color, #fff);
+
     }
     .icon-button {
       padding: 4px;
@@ -45,6 +47,10 @@ export class RichTextEditor extends LitElement {
     }
   `
 
+  bulletedListStyle = {
+    paddingLeft: '2em',
+    margin: '1em 0px'
+  }
   codeStyle = {
     fontFamily: 'monospace',
     backgroundColor: 'var(--slate-lit-code-background-color, #eee)',
@@ -55,7 +61,7 @@ export class RichTextEditor extends LitElement {
     marginLeft: '0',
     marginRight: '0',
     paddingLeft: '10px',
-    color: '#aaa',
+    color: 'var(--slate-lit-block-quote-color, #aaa)',
     fontStyle: 'italic',
     fontSize: '0.9em'
   }
@@ -125,8 +131,6 @@ export class RichTextEditor extends LitElement {
     }
   }
 
-
-
   onSelectionChange(event: CustomEvent) {
     if (event.detail && !Range.isCollapsed(event.detail)) {
       this.activeMarks.title.active = this.isBlockActive(this.slateLit.editor, 'heading-two');
@@ -151,7 +155,6 @@ export class RichTextEditor extends LitElement {
 
   toggleBlock = (editor: Editor, format: string) => {
     const isActive = this.isBlockActive(editor, format);
-    console.log('do it', isActive)
 
     const isList = LIST_TYPES.includes(format);
     Transforms.unwrapNodes(editor, {
@@ -209,6 +212,7 @@ export class RichTextEditor extends LitElement {
         return html`<ul
           id=${attributes.id}
           dir=${ifDefined(attributes.dir)}
+          style=${styleMap(this.bulletedListStyle)}
           ?contenteditable=${attributes.contentEditable}
           ?data-slate-void=${attributes['data-slate-void']}
           data-slate-node=${attributes['data-slate-node']}

@@ -59,6 +59,35 @@ export class Toolbar extends LitElement {
       border-width: 6px;
       margin-left: -6px;
     }
+
+    .toolbar-container.left::after {
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: "";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-right-color: var(--slate-toolbar-bg-color, #181B21);;
+      border-width: 6px;
+      margin-top: -6px;
+
+    }
+
+    .toolbar-container.right::after {
+      left: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: "";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-left-color:var(--slate-toolbar-bg-color, #181B21);;;
+      border-width: 6px;
+      margin-top: -6px;
+    }
   `
   @query('.toolbar-container') container!: HTMLElement;
   private _open = false;
@@ -85,9 +114,23 @@ export class Toolbar extends LitElement {
     }
   }
 
-  get scrollerPadding() {
-    return 8; // TODO get computed style of scoller;
+  _paddingTop: number| null = null
+  get scrollerPaddingTop() {
+    if (this._paddingTop === null) {
+      this._paddingTop = parseInt(window.getComputedStyle(this.scroller).paddingTop);
+    }
+
+    return this._paddingTop || 0;
   }
+
+  _paddingLeft: number| null = null
+  get scrollerTopPaddingLeft() {
+    if (this._paddingLeft === null) {
+      this._paddingLeft = parseInt(window.getComputedStyle(this.scroller).paddingLeft);
+    }
+    return this._paddingLeft || 0;
+  }
+
 
   private resizeObserver: any;
   private slateLitRect?: DOMRect;
@@ -147,16 +190,25 @@ export class Toolbar extends LitElement {
 
   getPosition() {
     if (!this.clientRect || !this.selectionRect || !this.slateLitRect) return;
-    let left = Math.max(this.selectionRect.left + this.selectionRect.width/2 - this.clientRect.width/2, this.slateLitRect.left);
-    let top = this.selectionRect.bottom + 10 + this.scrollerPadding;
-    let direction: 'top' | 'bottom' = 'bottom';
+    let left = Math.max(this.selectionRect.left + this.selectionRect.width/2 - this.clientRect.width/2, this.slateLitRect.left) + this.scrollerTopPaddingLeft;
+    let top = this.selectionRect.bottom + 10 + this.scrollerPaddingTop;
+    let direction: 'top' | 'bottom' | 'left' | 'right' | '' = 'bottom';
     if (top + this.clientRect.height > this.scroller.clientHeight + this.scroller.scrollTop + this.slateLitRect.top) {
       direction = 'top';
-      top = this.selectionRect.top - this.clientRect.height - 10 - this.scrollerPadding;
-      console.log(top, this.scroller.scrollTop + this.slateLitRect.top)
-      top = Math.max(top, this.scroller.scrollTop + this.slateLitRect.top )
-    } else {
-      top = Math.min(top, this.scroller.clientHeight + this.scroller.scrollTop + this.slateLitRect.top - this.clientRect.height)
+      top = this.selectionRect.top - this.clientRect.height - 10 - this.scrollerPaddingTop;
+      if (top < this.scroller.scrollTop + this.slateLitRect.top) {
+        top = Math.max(this.selectionRect.top + this.scrollerPaddingTop + this.selectionRect.height /2 - this.clientRect.height /2,  this.scroller.scrollTop + this.slateLitRect.top);
+        direction = 'left';
+        left = this.selectionRect.left +  this.selectionRect.width + 10 + this.scrollerTopPaddingLeft;
+        if (left + this.clientRect.width > this.scroller.clientWidth + this.slateLitRect.left) {
+          direction = 'right';
+          left = this.selectionRect.left - 10 - this.clientRect.width - this.scrollerTopPaddingLeft;
+          if (left < this.slateLitRect.left) {
+            direction = ''
+          }
+        }
+
+      }
     }
     top = top - this.slateLitRect.top;
     left = left - this.slateLitRect.left;
@@ -179,6 +231,7 @@ export class Toolbar extends LitElement {
       return;
     }
     const {left, top, direction} = position
+    if (!direction) return;
     for (const property of Object.keys(this.showClasses)) {
       this.showClasses[property] = false;
     }

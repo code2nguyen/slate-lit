@@ -10,12 +10,13 @@
         height: 100px;
         overflow: auto;
       }
-        .dark-theme {
-          --slate-lit-text-color: #e8eaed;
-          --slate-lit-bg-color: #303236;
-          --slate-lit-code-background-color: hsl(220, 11%, 10%);
-          --slate-lit-highlight-color: hsl(60, 100%, 50%);
-        }
+      .dark-theme {
+        overflow: auto;
+        --slate-lit-text-color: #e8eaed;
+        --slate-lit-bg-color: #303236;
+        --slate-lit-code-background-color: hsl(220, 11%, 10%);
+        --slate-lit-highlight-color: hsl(60, 100%, 50%);
+      }
     </style>
   </head>
   <body>
@@ -69,7 +70,7 @@
       render(
         html`
 
-      <rich-text-editor class="dark-theme" style="height: 300px" .value=${initialValue}> some more light-dom </rich-text-editor> `,
+      <rich-text-editor class="dark-theme"  .value=${emptyValue}> some more light-dom </rich-text-editor> `,
         document.querySelector('#demo1')
       );
     </script>

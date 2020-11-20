@@ -195,7 +195,7 @@ export class Toolbar extends LitElement {
     let direction: 'top' | 'bottom' | 'left' | 'right' | '' = 'bottom';
     if (top + this.clientRect.height > this.scroller.clientHeight + this.scroller.scrollTop + this.slateLitRect.top) {
       direction = 'top';
-      top = this.selectionRect.top - this.clientRect.height - 10 - this.scrollerPaddingTop;
+      top = this.selectionRect.top - this.clientRect.height - 10 + this.scrollerPaddingTop;
       if (top < this.scroller.scrollTop + this.slateLitRect.top) {
         top = Math.max(this.selectionRect.top + this.scrollerPaddingTop + this.selectionRect.height /2 - this.clientRect.height /2,  this.scroller.scrollTop + this.slateLitRect.top);
         direction = 'left';

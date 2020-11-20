@@ -1,6 +1,6 @@
 {
   "name": "@c2n/slate-lit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Webcomponent slate-lit following open-wc recommendations",
   "author": "Nguyen Thai Vinh<code2nguyen@gmail.com>",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "@c2n/slate-lit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Webcomponent slate-lit following open-wc recommendations",
   "author": "slate-lit",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "rollup": "rollup -c",
     "start": "concurrently --kill-others --names tsc,web-dev-server \"npm run tsc:watch\" \"web-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
     "tsc:watch": "tsc --watch",
-    "prepublish": "rm -rf dist && tsc && npm run rollup && cp package-publish.json  dist/package.json",
+    "prepublish": "rm -rf dist && tsc && npm run rollup && cp package-publish.json  dist/package.json && cp README.md dist",
     "storybook": "start-storybook --node-resolve --watch --open",
     "storybook:build": "build-storybook -o docs"
   },

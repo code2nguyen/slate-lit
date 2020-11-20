@@ -24,7 +24,7 @@ export class RichTextEditor extends LitElement {
     :host {
       display: flex;
       position: relative;
-      padding: var(--slate-lit-rich-text-editor-padding, 0px 0px 0px 0px);
+      padding: var(--slate-lit-rich-text-editor-padding, 8px 0px 8px 8px);
       background-color: var(--slate-lit-bg-color, #fff);
 
     }

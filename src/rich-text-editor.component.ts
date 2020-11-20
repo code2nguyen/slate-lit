@@ -25,7 +25,6 @@ export class RichTextEditor extends LitElement {
       display: flex;
       position: relative;
       padding: var(--slate-lit-rich-text-editor-padding, 8px 0px 8px 8px);
-      overflow: auto;
     }
     .icon-button {
       padding: 4px;
@@ -58,7 +57,7 @@ export class RichTextEditor extends LitElement {
     paddingLeft: '10px',
     color: '#aaa',
     fontStyle: 'italic',
-    fontSize: '0.9rem'
+    fontSize: '0.9em'
   }
 
 
@@ -87,6 +86,7 @@ export class RichTextEditor extends LitElement {
       .renderElement=${this.renderElement}
       .value=${this.value}
       .placeholder=${this.placeholder}
+      spellcheck=${this.spellcheck}
       .readOnly=${this.readOnly}
       @keydown=${this.onKeyDown}
       @selectionChange=${this.onSelectionChange}
